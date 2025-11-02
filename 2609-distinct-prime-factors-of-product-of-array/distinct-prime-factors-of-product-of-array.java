@@ -1,25 +1,32 @@
+import java.util.*;
+
 class Solution {
     public int distinctPrimeFactors(int[] nums) {
-        HashSet<Integer>set=new HashSet<>();
-        for(int num:nums){
-            int n=num;
-        
-        while(n % 2 == 0) {
-            set.add(2);
-             n /= 2;
-        }
+        Set<Integer> set = new HashSet<>();
 
-        // Check for odd numbers
-        for (int i = 3; i * i <= n; i += 2) {
-            while (n % i == 0) {
-                set.add(i);
-                n /= i;
+        for (int num : nums) {
+            int n = num;
+
+            // Extract all factors of 2
+            while (n % 2 == 0) {
+                set.add(2);
+                n /= 2;
+            }
+
+            // Extract all odd prime factors
+            for (int i = 3; i * i <= n; i += 2) {
+                while (n % i == 0) {
+                    set.add(i);
+                    n /= i;
+                }
+            }
+
+            // If n is still > 2, it's a prime
+            if (n > 2) {
+                set.add(n);
             }
         }
 
-        // If n > 2, it’s a prime
-        if (n > 2) set.add(n);
-        }
         return set.size();
     }
 }
