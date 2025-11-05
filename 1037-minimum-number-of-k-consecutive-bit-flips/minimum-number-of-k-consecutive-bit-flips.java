@@ -1,6 +1,5 @@
 class Solution {
     public int minKBitFlips(int[] nums, int k) {
-        int count = 0;
         int n = nums.length;
         int flip=0;
         int flipcount=0;
