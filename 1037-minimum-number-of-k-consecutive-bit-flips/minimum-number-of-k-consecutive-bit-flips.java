@@ -2,20 +2,21 @@ class Solution {
     public int minKBitFlips(int[] nums, int k) {
         int count = 0;
         int n = nums.length;
-
-        for (int i = k - 1; i < n; i++) {
-            nums[i] -= count;
-            if ((nums[i - k + 1] + count) % 2 == 0) {
-                count++;
+        int flip=0;
+        int flipcount=0;
+        boolean [] isFlipped=new boolean[n];
+        Arrays.fill(isFlipped,false);
+        for(int i=0;i<n;i++){
+            if(i>=k && isFlipped[i-k]==true){
+                flipcount--;
+            }
+            if(flipcount%2==nums[i]){
+                if(i+k>n)return -1;
+                flip++;
+                flipcount++;
+                isFlipped[i]=true;
             }
         }
-
-        for (int i = n - 1; i >= n - k; i--) {
-            if ((nums[i] + count) % 2 == 0) {
-                return -1;
-            }
-        }
-
-        return count;
+        return flip;
     }
 }
