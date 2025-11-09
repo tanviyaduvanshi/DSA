@@ -16,9 +16,11 @@
 class Solution {
     static int helper(TreeNode root){
         if(root==null)return 0;
-        if(root.left==null)return helper(root.right)+1;
-        if(root.right==null)return helper(root.left)+1;
-        return Math.min(helper(root.left),helper(root.right))+1;
+        int ld=helper(root.left);
+        int rd=helper(root.right);
+        if(root.left==null)return rd+1;
+        if(root.right==null)return ld+1;
+        return Math.min(ld,rd)+1;
     }
     public int minDepth(TreeNode root) {
         return helper(root);
