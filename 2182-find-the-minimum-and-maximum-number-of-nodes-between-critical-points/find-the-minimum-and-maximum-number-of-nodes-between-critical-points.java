@@ -15,7 +15,7 @@ class Solution {
         int count=1;
         ArrayList<Integer>list=new ArrayList<>();
         //prev.next=head;
-        while(curr!=null&&curr.next!=null){
+        while(curr.next!=null){
             if((curr.val>prev.val&&curr.val>curr.next.val)||(curr.val<prev.val&&curr.val<curr.next.val)){
                 list.add(count+1);
             }
