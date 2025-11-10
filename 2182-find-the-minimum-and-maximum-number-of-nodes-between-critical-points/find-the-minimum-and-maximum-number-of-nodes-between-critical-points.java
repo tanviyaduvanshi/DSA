@@ -17,7 +17,7 @@ class Solution {
         //prev.next=head;
         while(curr!=null&&curr.next!=null){
             if((curr.val>prev.val&&curr.val>curr.next.val)||(curr.val<prev.val&&curr.val<curr.next.val)){
-                list.add(count);
+                list.add(count+1);
             }
             count++;
             prev=curr;
